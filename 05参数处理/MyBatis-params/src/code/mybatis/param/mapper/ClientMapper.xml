@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="code.mybatis.param.mapper.ClientMapper">
+
+	<select id="login1" parameterType="LoginVO" resultType="Client">
+		select id,username,password from client where username = #{username} and password = #{password}
+	</select>
+	
+	<select id="login2" parameterType="map" resultType="Client">
+		select id,username,password from client where username = #{username} and password = #{password}
+	</select>
+	
+	<select id="login3" resultType="Client">
+		select id,username,password from client where username = #{username} and password = #{password}
+	</select>
+	
+	<select id="list" resultType="Client">
+		select id,username,password from client order by ${orderBy}
+	</select>
+	<!-- 
+		使用#出传递的参数会先转换成占位符?，再通过设置占位符参数的方式来设置值(通通会给值使用单引号引起来)。
+		使用$传递的参数，直接把解析出来的数据作为SQL语句的一部分。
+	 -->
+</mapper>
+    

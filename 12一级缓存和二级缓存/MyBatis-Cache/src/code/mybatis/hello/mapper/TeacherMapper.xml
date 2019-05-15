@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="code.mybatis.hello.mapper.TeacherMapper">
+	<cache/>
+
+	<select id="get" resultType="Teacher" useCache="true">
+		SELECT id,name FROM teacher WHERE id = #{id}
+	</select>
+	
+	<!-- 在大多数情况下，针对于列表查询，设置为不缓存，只有SQL和参数相同的时候，才会使用到缓存。 -->
+	<select id="listAll" resultType="Teacher" useCache="false">
+		SELECT id,name FROM teacher
+	</select>
+	
+	<!-- 默认情况下，insert,delete,update操作都会去刷新缓存，但是对象插入操作却没有必要。 -->
+	<insert id="" flushCache="false"></insert>
+	
+</mapper>
+    
